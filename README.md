@@ -1,11 +1,29 @@
-## API (Back End)
+> ## 추가 설치 한 의존성 (기본 CRA 이외)
+
+1. react-router-dom (react 에서 라우팅을 위한 패키지)
+2. typescript (개발 효율 향상 및 런타임 에러 컴파일 타임에서 방지)
+3. eslint (개발 경험 향상, 코드 작성 규칙 정해줌)
+4. prettier (개발 경험 향상, tab space 과 같은 코드 스타일 획일화 해줌)
+
+> ## 화면(url 기준)
+
+1. /signup
+2. /signin
+3. /todo
+
+> ## 사용 가능 API (Back End)
 
 [API github 주소](https://github.com/walking-sunset/selection-task)  
 c.f.) api는 https://pre-onboarding-selection-task.shop/ 로 domain을 잡아주자
 
+1. /auth/signup - POST
+2. /auth/signin - POST
+3. /todos - GET, POST
+4. /todos/:id - PUT, DELETE
+
 <hr/>
 
-## 과제 요구사항
+> ## 과제 요구사항
 
 1. 로그인/회원가입 기능
    1. [Assignment1](https://github.com/walking-sunset/selection-task#:~:text=%EB%8A%94%20%EB%8F%99%EC%9D%BC%ED%95%B4%EB%8F%84%20%EB%AC%B4%EB%B0%A9%ED%95%A9%EB%8B%88%EB%8B%A4.-,Assignment%201,-%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85%EA%B3%BC%20%EB%A1%9C%EA%B7%B8%EC%9D%B8%20%ED%8E%98%EC%9D%B4%EC%A7%80%EC%97%90)
@@ -35,7 +53,7 @@ c.f.) api는 https://pre-onboarding-selection-task.shop/ 로 domain을 잡아주
    6. [Assignment 10](https://github.com/walking-sunset/selection-task#:~:text=%EC%95%84%EC%9D%B4%ED%85%9C%EC%9D%B4%20%EC%82%AD%EC%A0%9C%EB%90%98%EB%8F%84%EB%A1%9D%20%ED%95%B4%EC%A3%BC%EC%84%B8%EC%9A%94-,Assignment%2010,-%ED%88%AC%EB%91%90%20%EB%A6%AC%EC%8A%A4%ED%8A%B8%EC%9D%98%20%EC%88%98%EC%A0%95)
       - [ ] 투두 리스트의 수정 기능을 구현해주세요
 
-c.f.)
+> c.f.)
 
 1. fallback(error 처리)
 2. suspense(비동기 데이터 response wait 상태 처리)
