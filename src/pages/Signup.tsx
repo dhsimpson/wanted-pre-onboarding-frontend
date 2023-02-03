@@ -1,19 +1,22 @@
 import IAuthFormData from 'interfaces/IAuthFormData'
 import useAuthForm from '../hooks/useAuthForm'
-import { useNavigate } from 'react-router-dom'
 import { signUp } from '../api/auth'
 
 export default function Signup() {
-  const navigate = useNavigate()
-
-  const { handleSubmit, handleChange, setEmail, setPassword, isValid } =
-    useAuthForm(async (target: IAuthFormData) => {
-      // axios
-      const responsStatus = await signUp(target)
-      if (responsStatus === 201) {
-        navigate('/signin')
-      }
-    })
+  const {
+    handleSubmit,
+    handleChange,
+    setEmail,
+    setPassword,
+    isValid,
+    navigate
+  } = useAuthForm(async (target: IAuthFormData) => {
+    // axios
+    const responsStatus = await signUp(target)
+    if (responsStatus === 201) {
+      navigate('/signin')
+    }
+  })
   return (
     <form onSubmit={handleSubmit}>
       <input
