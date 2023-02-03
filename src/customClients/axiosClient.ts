@@ -10,14 +10,18 @@ const axiosClient = axios.create({ baseURL: baseUrl })
 
 axiosClient.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
-    const authToken =
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRvbmdkb25nQHdhbnRlZC5jb20iLCJzdWIiOjYwOCwiaWF0IjoxNjc1NDQwMDg5LCJleHAiOjE2NzYwNDQ4ODl9.HxKegDEgNNwMF4-LYpeuxeWmPpgLuei9UauAzVS2Xo8'
-    //localStorage.getItem('authtoken');
-    if (authToken) {
-      config.headers.setAuthorization(`Bearer ${authToken}`)
-      //   config.headers = {
-      //     Authorization: `Bearer ${authToken}`,
-      //   };
+    const paths = config.url?.split('/') ?? []
+    // signup, signin 은 토큰 필요없음
+    if (paths[0] !== 'auth') {
+      const authToken =
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRvbmdkb25nQHdhbnRlZC5jb20iLCJzdWIiOjYwOCwiaWF0IjoxNjc1NDQwMDg5LCJleHAiOjE2NzYwNDQ4ODl9.HxKegDEgNNwMF4-LYpeuxeWmPpgLuei9UauAzVS2Xo8'
+      //localStorage.getItem('authtoken');
+      if (authToken) {
+        config.headers.setAuthorization(`Bearer ${authToken}`)
+        //   config.headers = {
+        //     Authorization: `Bearer ${authToken}`,
+        //   };
+      }
     }
     return config
   },
