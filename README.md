@@ -1,46 +1,42 @@
-# Getting Started with Create React App
+## API (Back End)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[API github 주소](https://github.com/walking-sunset/selection-task)  
+c.f.) api는 https://pre-onboarding-selection-task.shop/ 로 domain을 잡아주자
 
-## Available Scripts
+<hr/>
 
-In the project directory, you can run:
+## 과제 요구사항
 
-### `yarn start`
+1. 로그인/회원가입 기능
+   1. [Assignment1](https://github.com/walking-sunset/selection-task#:~:text=%EB%8A%94%20%EB%8F%99%EC%9D%BC%ED%95%B4%EB%8F%84%20%EB%AC%B4%EB%B0%A9%ED%95%A9%EB%8B%88%EB%8B%A4.-,Assignment%201,-%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85%EA%B3%BC%20%EB%A1%9C%EA%B7%B8%EC%9D%B8%20%ED%8E%98%EC%9D%B4%EC%A7%80%EC%97%90)
+      - [ ] 회원가입과 로그인 페이지에 이메일과 비밀번호의 유효성 검사기능을 구현해주세요
+      - [ ] 입력된 이메일과 비밀번호가 유효성 검사를 통과하지 못한다면 button에 disabled 속성을 부여해주세요
+   2. [Assignment2](https://github.com/walking-sunset/selection-task#:~:text=%ED%8C%A8%EC%8A%A4%EC%9B%8C%EB%93%9C%20%EC%82%AC%EC%9A%A9%EC%9D%84%20%EA%B6%8C%EC%9E%A5%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.-,Assignment%202,-%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85%20%ED%8E%98%EC%9D%B4%EC%A7%80%EC%97%90%EC%84%9C%20%EB%B2%84%ED%8A%BC%EC%9D%84)
+      - [ ] 회원가입 페이지에서 버튼을 클릭 시 회원가입을 진행하고 회원가입이 정상적으로 완료되었을 시 /signin 경로로 이동해주세요
+   3. [Assignment3](https://github.com/walking-sunset/selection-task#:~:text=signin%20%EA%B2%BD%EB%A1%9C%EB%A1%9C%20%EC%9D%B4%EB%8F%99%ED%95%B4%EC%A3%BC%EC%84%B8%EC%9A%94-,Assignment%203,-%EB%A1%9C%EA%B7%B8%EC%9D%B8%20%ED%8E%98%EC%9D%B4%EC%A7%80%EC%97%90%EC%84%9C%20%EB%B2%84%ED%8A%BC%EC%9D%84)
+      - [ ] 로그인 페이지에서 버튼을 클릭 시, 로그인을 진행하고 로그인이 정상적으로 완료되었을 시 /todo 경로로 이동해주세요
+   4. [Assignment4](https://github.com/walking-sunset/selection-task#:~:text=%EB%A1%9C%EC%BB%AC%20%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80%EC%97%90%20%EC%A0%80%EC%9E%A5%ED%95%B4%EC%A3%BC%EC%84%B8%EC%9A%94-,Assignment%204,-%EB%A1%9C%EA%B7%B8%EC%9D%B8%20%EC%97%AC%EB%B6%80%EC%97%90%20%EB%94%B0%EB%A5%B8)
+      - [ ] 로그인 여부에 따른 리다이렉트 처리를 구현해주세요
+2. Todo List 기능
+   1. [Assignment5](https://github.com/walking-sunset/selection-task#:~:text=2.%20TODO%20LIST-,Assignment%205,-/todo%EA%B2%BD%EB%A1%9C%EC%97%90%20%EC%A0%91%EC%86%8D%ED%95%98%EB%A9%B4)
+      - [ ] /todo경로에 접속하면 투두 리스트의 목록을 볼 수 있도록 해주세요
+      - [ ] 목록에서는 TODO의 내용과 완료 여부가 표시되어야 합니다.
+      - [ ] TODO의 완료 여부는 \<input type="checkbox" />를 통해 표현해주세요
+      - [ ] TODO는 \<li> tag를 이용해 감싸주세요
+   2. [Assignment 6](https://github.com/walking-sunset/selection-task#:~:text=%3C/li%3E-,Assignment%206,-%EB%A6%AC%EC%8A%A4%ED%8A%B8%20%ED%8E%98%EC%9D%B4%EC%A7%80%EC%97%90%20%EC%83%88%EB%A1%9C%EC%9A%B4)
+      - [ ] 리스트 페이지에 새로운 TODO를 입력할 수 있는 input과 추가 button을 만들어주세요
+      - [ ] 추가 button을 클릭하면 입력 input의 내용이 새로운 TODO로 추가되도록 해주세요
+   3. [Assignment 7](https://github.com/walking-sunset/selection-task#:~:text=%EB%A1%9C%20%EC%B6%94%EA%B0%80%EB%90%98%EB%8F%84%EB%A1%9D%20%ED%95%B4%EC%A3%BC%EC%84%B8%EC%9A%94-,Assignment%207,-TODO%EC%9D%98%20%EC%B2%B4%ED%81%AC%EB%B0%95%EC%8A%A4%EB%A5%BC)
+      - [ ] TODO의 체크박스를 통해 완료 여부를 수정할 수 있도록 해주세요.
+   4. [Assignment 8](https://github.com/walking-sunset/selection-task#:~:text=%EC%88%98%20%EC%9E%88%EB%8F%84%EB%A1%9D%20%ED%95%B4%EC%A3%BC%EC%84%B8%EC%9A%94.-,Assignment%208,-TODO%20%EC%9A%B0%EC%B8%A1%EC%97%90%20%EC%88%98%EC%A0%95%EB%B2%84%ED%8A%BC%EA%B3%BC)
+      - [ ] TODO 우측에 수정버튼과 삭제 버튼을 만들어주세요
+   5. [Assignment 9](https://github.com/walking-sunset/selection-task#:~:text=%3C/li%3E-,Assignment%209,-%ED%88%AC%EB%91%90%20%EB%A6%AC%EC%8A%A4%ED%8A%B8%EC%9D%98%20%EC%82%AD%EC%A0%9C)
+      - [ ] 투두 리스트의 삭제 기능을 구현해주세요
+   6. [Assignment 10](https://github.com/walking-sunset/selection-task#:~:text=%EC%95%84%EC%9D%B4%ED%85%9C%EC%9D%B4%20%EC%82%AD%EC%A0%9C%EB%90%98%EB%8F%84%EB%A1%9D%20%ED%95%B4%EC%A3%BC%EC%84%B8%EC%9A%94-,Assignment%2010,-%ED%88%AC%EB%91%90%20%EB%A6%AC%EC%8A%A4%ED%8A%B8%EC%9D%98%20%EC%88%98%EC%A0%95)
+      - [ ] 투두 리스트의 수정 기능을 구현해주세요
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+c.f.)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. fallback(error 처리)
+2. suspense(비동기 데이터 response wait 상태 처리)
+3. 수정, 삭제 시 확인 요청을 위해 alert 나 modal popup
