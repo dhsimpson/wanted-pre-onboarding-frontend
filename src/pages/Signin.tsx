@@ -1,8 +1,14 @@
 import useAuthForm from 'hooks/useAuthForm'
 import IAuthFormData from 'interfaces/IAuthFormData'
+import { Navigate } from 'react-router-dom'
+import { isTokenExist } from 'utils/token'
 import { signIn } from '../api/auth'
 
 export default function Signin() {
+  if (isTokenExist()) {
+    return <Navigate to="/todo" replace />
+  }
+
   const {
     handleSubmit,
     handleChange,
