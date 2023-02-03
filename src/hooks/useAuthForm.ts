@@ -1,6 +1,7 @@
 import IAuthFormData from 'interfaces/IAuthFormData'
 import { FormEvent, Dispatch, SetStateAction, useState } from 'react'
 import { canSubmit, isValidEmail, isValidPassword } from 'utils/validate'
+import { useNavigate } from 'react-router-dom'
 
 export default function useAuthForm(
   submitCallback: (target: IAuthFormData) => void
@@ -26,11 +27,14 @@ export default function useAuthForm(
     return canSubmit(email, password)
   }
 
+  const navigate = useNavigate()
+
   return {
     handleSubmit,
     handleChange,
     setEmail,
     setPassword,
-    isValid
+    isValid,
+    navigate
   }
 }
