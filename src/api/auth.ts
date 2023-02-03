@@ -1,5 +1,6 @@
 import IAuthFormData from '../interfaces/IAuthFormData'
 import axiosClient from 'customClients/axiosClient'
+import { saveToken } from 'utils/token'
 
 export const signUp = async (data: IAuthFormData) => {
   try {
@@ -33,6 +34,7 @@ export const signIn = async (data: IAuthFormData) => {
 
     if (res.status === 200) {
       alert('로그인 되었습니다.')
+      saveToken(res.data.access_token)
       return res.status
     }
   } catch (error: any) {
