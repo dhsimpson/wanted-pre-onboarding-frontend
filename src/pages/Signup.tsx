@@ -1,7 +1,7 @@
 import IAuthFormData from 'interfaces/IAuthFormData'
 import useAuthForm from '../hooks/useAuthForm'
-import axiosClient from 'customClients/axiosClient'
 import { useNavigate } from 'react-router-dom'
+import { signUp } from '../api/auth'
 
 export default function Signup() {
   const navigate = useNavigate()
@@ -9,27 +9,9 @@ export default function Signup() {
   const { handleSubmit, handleChange, setEmail, setPassword, isValid } =
     useAuthForm(async (target: IAuthFormData) => {
       // axios
-      try {
-        const res = await axiosClient.post('auth/signup', {
-          email: target.email.value,
-          password: target.password.value
-        })
-
-        if (res.status === 201) {
-          alert('회원가입 성공!')
-          navigate('/signin')
-          return
-        }
-      } catch (error: any) {
-        if (error.response?.status === 400) {
-          //error.response.message
-          alert('이미 있는 이메일 입니다.')
-          return
-        }
-        if (error.response?.status === 401) {
-          alert('이메일 혹은 패스워드를 잘못 입력했습니다.')
-          return
-        }
+      const responsStatus = await signUp(target)
+      if (responsStatus === 201) {
+        navigate('/signin')
       }
     })
   return (
