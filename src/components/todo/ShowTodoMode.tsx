@@ -1,7 +1,7 @@
 import TodoContext from 'context/TodoContext'
 import axiosClient from 'customClients/axiosClient'
 import { ITodoData } from 'interfaces/ITodo'
-import { ChangeEvent, useContext, useState } from 'react'
+import { ChangeEvent, useContext } from 'react'
 
 export default function ShowTodoMode({
   todoItem,
@@ -27,6 +27,8 @@ export default function ShowTodoMode({
           const deletedContextTodoList = contextTodoList?.filter(
             (todo) => todo.id != todoItem.id
           )
+          console.log(contextTodoList)
+
           setContextTodoList?.(deletedContextTodoList ?? ([] as ITodoData[]))
         }
       } catch (error: any) {
@@ -41,16 +43,22 @@ export default function ShowTodoMode({
     }
   }
 
-  const [isChecked, setIsChecked] = useState(todoItem.isCompleted)
   const handleCheckBox = async (event: ChangeEvent<HTMLInputElement>) => {
     try {
       const response = await axiosClient.put(`todos/${todoItem.id}`, {
         todo: todoItem.todo,
-        isCompleted: !isChecked
+        isCompleted: !todoItem.isCompleted
       })
 
       if (response.status === 200) {
-        setIsChecked(response.data.isCompleted)
+        const updatedContextTodoList = contextTodoList?.map((todo) => {
+          if (todo.id === response.data.id) {
+            return response.data
+          }
+          return todo
+        })
+
+        setContextTodoList?.(updatedContextTodoList ?? ([] as ITodoData[]))
       }
     } catch (error: any) {
       const errorStatus = error.response?.status
@@ -65,7 +73,11 @@ export default function ShowTodoMode({
   return (
     <>
       <label>
-        <input type="checkbox" checked={isChecked} onChange={handleCheckBox} />
+        <input
+          type="checkbox"
+          checked={todoItem.isCompleted}
+          onChange={handleCheckBox}
+        />
         <span>{todoItem.todo}</span>
       </label>
       <button data-testid="modify-button" onClick={() => setIsUpdateMode(true)}>

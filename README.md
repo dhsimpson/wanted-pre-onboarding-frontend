@@ -43,7 +43,7 @@ c.f.) api는 https://pre-onboarding-selection-task.shop/ 로 domain을 잡아주
       - [x] TODO는 \<li> tag를 이용해 감싸주세요
    2. [Assignment 6](https://github.com/walking-sunset/selection-task#:~:text=%3C/li%3E-,Assignment%206,-%EB%A6%AC%EC%8A%A4%ED%8A%B8%20%ED%8E%98%EC%9D%B4%EC%A7%80%EC%97%90%20%EC%83%88%EB%A1%9C%EC%9A%B4)
       - [x] 리스트 페이지에 새로운 TODO를 입력할 수 있는 input과 추가 button을 만들어주세요
-      - [ ] 추가 button을 클릭하면 입력 input의 내용이 새로운 TODO로 추가되도록 해주세요
+      - [x] 추가 button을 클릭하면 입력 input의 내용이 새로운 TODO로 추가되도록 해주세요
    3. [Assignment 7](https://github.com/walking-sunset/selection-task#:~:text=%EB%A1%9C%20%EC%B6%94%EA%B0%80%EB%90%98%EB%8F%84%EB%A1%9D%20%ED%95%B4%EC%A3%BC%EC%84%B8%EC%9A%94-,Assignment%207,-TODO%EC%9D%98%20%EC%B2%B4%ED%81%AC%EB%B0%95%EC%8A%A4%EB%A5%BC)
       - [x] TODO의 체크박스를 통해 완료 여부를 수정할 수 있도록 해주세요.
    4. [Assignment 8](https://github.com/walking-sunset/selection-task#:~:text=%EC%88%98%20%EC%9E%88%EB%8F%84%EB%A1%9D%20%ED%95%B4%EC%A3%BC%EC%84%B8%EC%9A%94.-,Assignment%208,-TODO%20%EC%9A%B0%EC%B8%A1%EC%97%90%20%EC%88%98%EC%A0%95%EB%B2%84%ED%8A%BC%EA%B3%BC)
@@ -60,6 +60,7 @@ c.f.) api는 https://pre-onboarding-selection-task.shop/ 로 domain을 잡아주
 3. 수정, 삭제 시 확인 요청을 위해 alert 나 modal popup
 4. 서버 응답 코드에 따라 처리
 5. 서버 응답 코드 같은 것 const 로 변경하기
+6. todo list 업데이트 시 모든 todoitem 컴포넌트가 리렌더링 되는 것 같은데, useMemo 로 이를 방지 가능한지?
 
 > ## 참고한 자료들
 

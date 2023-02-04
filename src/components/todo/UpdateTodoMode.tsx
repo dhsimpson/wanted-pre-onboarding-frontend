@@ -1,7 +1,7 @@
+import TodoContext from 'context/TodoContext'
 import axiosClient from 'customClients/axiosClient'
-import IAuthFormData from 'interfaces/IAuthFormData'
 import { ITodoData, ITodoFormData } from 'interfaces/ITodo'
-import { FormEvent, useState } from 'react'
+import { FormEvent, useContext, useState } from 'react'
 import { canSubmit } from 'utils/validateTodo'
 
 export default function UpdateTodoMode({
@@ -11,6 +11,12 @@ export default function UpdateTodoMode({
   todoItem: ITodoData
   setIsUpdateMode: React.Dispatch<React.SetStateAction<boolean>>
 }) {
+  const todoContext = useContext(TodoContext)
+
+  const { contextTodoList, setContextTodoList } = todoContext ?? {
+    contextTodoList: undefined,
+    setContextTodoList: undefined
+  }
   const [todoData, setTodoData] = useState(todoItem.todo)
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -28,6 +34,15 @@ export default function UpdateTodoMode({
 
       if (response.status === 200) {
         alert('todo 수정을 완료 하였습니다!')
+
+        const updatedContextTodoList = contextTodoList?.map((todo) => {
+          if (todo.id === response.data.id) {
+            return response.data
+          }
+          return todo
+        })
+        setContextTodoList?.(updatedContextTodoList ?? ([] as ITodoData[]))
+        setIsUpdateMode(false)
       }
     } catch (error: any) {
       const errorStatus = error.response?.status
@@ -41,7 +56,6 @@ export default function UpdateTodoMode({
   }
   const handleChange = (event: FormEvent<HTMLInputElement>) => {
     setTodoData(event.currentTarget.value)
-    console.log(todoData)
   }
   return (
     <form onSubmit={handleSubmit}>
