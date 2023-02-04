@@ -35,7 +35,7 @@ export default function Signin() {
         name="password"
         onChange={(e) => handleChange(e, setPassword)}
       />
-      <button data-testid="signup-button" type="submit" disabled={!isValid()}>
+      <button data-testid="signin-button" type="submit" disabled={!isValid()}>
         로그인
       </button>
     </form>
