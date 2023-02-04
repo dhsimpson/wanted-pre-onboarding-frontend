@@ -1,8 +1,8 @@
-import TodoContext from 'context/TodoContext'
 import axiosClient from 'customClients/axiosClient'
 import { ITodoData, ITodoFormData } from 'interfaces/ITodo'
-import { FormEvent, useContext, useState } from 'react'
+import { FormEvent, useState } from 'react'
 import { canSubmit } from 'utils/validateTodo'
+import useTodoContext from 'hooks/useTodoContext'
 
 export default function UpdateTodoMode({
   todoItem,
@@ -11,12 +11,8 @@ export default function UpdateTodoMode({
   todoItem: ITodoData
   setIsUpdateMode: React.Dispatch<React.SetStateAction<boolean>>
 }) {
-  const todoContext = useContext(TodoContext)
+  const { contextTodoList, setContextTodoList } = useTodoContext()
 
-  const { contextTodoList, setContextTodoList } = todoContext ?? {
-    contextTodoList: undefined,
-    setContextTodoList: undefined
-  }
   const [todoData, setTodoData] = useState(todoItem.todo)
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()

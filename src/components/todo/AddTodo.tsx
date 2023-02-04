@@ -1,16 +1,12 @@
 import TodoContext from 'context/TodoContext'
 import axiosClient from 'customClients/axiosClient'
 import { ITodoFormData } from 'interfaces/ITodo'
-import { FormEvent, useContext } from 'react'
+import { FormEvent } from 'react'
 import { canSubmit } from 'utils/validateTodo'
+import useTodoContext from 'hooks/useTodoContext'
 
 export default function AddTodo() {
-  const todoContext = useContext(TodoContext)
-
-  const { contextTodoList, setContextTodoList } = todoContext ?? {
-    contextTodoList: undefined,
-    setContextTodoList: undefined
-  }
+  const { contextTodoList, setContextTodoList } = useTodoContext()
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -29,7 +25,7 @@ export default function AddTodo() {
       if (response.status === 201) {
         alert('todo 가 추가되었습니다!')
         console.log(response)
-        setContextTodoList?.([...contextTodoList, response.data])
+        setContextTodoList?.([...(contextTodoList ?? []), response.data])
       }
     } catch (error: any) {
       const errorStatus = error.response?.status

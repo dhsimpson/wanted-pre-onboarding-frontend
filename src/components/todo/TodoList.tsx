@@ -3,15 +3,10 @@ import { useContext, useEffect } from 'react'
 import { getTodoList } from 'api/todo'
 import { ITodoData } from 'interfaces/ITodo'
 import TodoItem from './TodoItem'
-import TodoContext from 'context/TodoContext'
+import useTodoContext from 'hooks/useTodoContext'
 
 export default function TodoList() {
-  const todoContext = useContext(TodoContext)
-
-  const { contextTodoList, setContextTodoList } = todoContext ?? {
-    contextTodoList: undefined,
-    setContextTodoList: undefined
-  }
+  const { contextTodoList, setContextTodoList } = useTodoContext()
 
   const navigate = useNavigate()
 

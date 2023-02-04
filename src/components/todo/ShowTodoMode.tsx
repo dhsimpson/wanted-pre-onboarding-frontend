@@ -1,7 +1,8 @@
 import TodoContext from 'context/TodoContext'
 import axiosClient from 'customClients/axiosClient'
 import { ITodoData } from 'interfaces/ITodo'
-import { ChangeEvent, useContext } from 'react'
+import { ChangeEvent } from 'react'
+import useTodoContext from 'hooks/useTodoContext'
 
 export default function ShowTodoMode({
   todoItem,
@@ -10,12 +11,7 @@ export default function ShowTodoMode({
   todoItem: ITodoData
   setIsUpdateMode: React.Dispatch<React.SetStateAction<boolean>>
 }) {
-  const todoContext = useContext(TodoContext)
-
-  const { contextTodoList, setContextTodoList } = todoContext ?? {
-    contextTodoList: undefined,
-    setContextTodoList: undefined
-  }
+  const { contextTodoList, setContextTodoList } = useTodoContext()
 
   async function handleDelete() {
     const willDelete = confirm('정말 삭제하시겠습니까?')
