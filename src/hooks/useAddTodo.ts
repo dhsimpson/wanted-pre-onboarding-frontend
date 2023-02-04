@@ -1,4 +1,4 @@
-import axiosClient from 'customClients/axiosClient'
+import { addTodoList } from 'api/todo'
 import { ITodoFormData } from 'interfaces/ITodo'
 import { FormEvent } from 'react'
 import { canSubmit } from 'utils/validateTodo'
@@ -10,27 +10,17 @@ export default function useAddTodoList() {
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const target = event.target as ITodoFormData
+    if (!canSubmit(target.todo.value)) {
+      alert('todo 가 입력되지 않았습니다!')
+      return
+    }
 
-    try {
-      if (!canSubmit(target.todo.value)) {
-        alert('todo 가 입력되지 않았습니다!')
-        return
-      }
-
-      const response = await axiosClient.post('todos', {
-        todo: target.todo.value
-      })
-
-      if (response.status === 201) {
+    addTodoList(target.todo.value).then((response) => {
+      if (response?.status === 201) {
         alert('todo 가 추가되었습니다!')
-        console.log(response)
         setContextTodoList?.([...(contextTodoList ?? []), response.data])
       }
-    } catch (error: any) {
-      const errorStatus = error.response?.status
-      alert(errorStatus + '!!')
-      console.error(error)
-    }
+    })
   }
   return handleSubmit
 }
