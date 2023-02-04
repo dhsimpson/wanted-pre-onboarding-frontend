@@ -9,7 +9,6 @@ export default function AddTodo() {
     const target = event.target as ITodoFormData
 
     try {
-      //TODO : validation 함수로 빼기
       if (!canSubmit(target.todo.value)) {
         alert('todo 가 입력되지 않았습니다!')
         return
