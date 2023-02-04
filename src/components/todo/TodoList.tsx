@@ -1,22 +1,26 @@
+import { useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { getTodoList } from 'api/todo'
+import { ITodoData } from '../../interfaces/ITodoData'
+import TodoItem from './TodoItem'
 export default function TodoList() {
+  const [todoList, setTodoList] = useState([])
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    getTodoList().then((data) => {
+      if (data === 401) {
+        navigate('/signin', { replace: true })
+        return
+      }
+      setTodoList(data)
+    })
+  }, [])
   return (
     <>
-      <li>
-        <label>
-          <input type="checkbox" />
-          <span>TODO 1</span>
-        </label>
-        <button data-testid="modify-button">수정</button>
-        <button data-testid="delete-button">삭제</button>
-      </li>
-      <li>
-        <label>
-          <input type="checkbox" />
-          <span>TODO 2</span>
-        </label>
-        <button data-testid="modify-button">수정</button>
-        <button data-testid="delete-button">삭제</button>
-      </li>
+      {todoList.map((todoItem: ITodoData) => {
+        return <TodoItem {...todoItem} />
+      })}
     </>
   )
 }
