@@ -2,6 +2,8 @@ import { Navigate, useNavigate } from 'react-router-dom'
 import { isTokenExist } from 'utils/token'
 import { useEffect, useState } from 'react'
 import { getTodoList } from 'api/todo'
+import AddTodo from 'components/todo/AddTodo'
+import TodoList from 'components/todo/TodoList'
 
 export default function Todo() {
   if (!isTokenExist()) {
@@ -20,5 +22,10 @@ export default function Todo() {
     })
   }, [])
   //   console.log(todoList)
-  return <>im Todo</>
+  return (
+    <>
+      <AddTodo />
+      <TodoList />
+    </>
+  )
 }
