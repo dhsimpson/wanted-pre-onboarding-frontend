@@ -6,20 +6,22 @@ import useTodoContext from './useTodoContext'
 // 이 친구는 checkbox 로직, todo 로직 주입할 수 있도록 변경 필요
 export default function useUpdateTodo(
   todoItem: ITodoData,
-  validateUpdate: (
+  updateTodo: (todoItem: ITodoData) => ITodoData,
+  updateCompleteCallback?: () => void,
+  validateUpdate?: (
     event: FormEvent<HTMLFormElement> | ChangeEvent<HTMLInputElement>
-  ) => boolean,
-  updateCompleteCallback: () => void,
-  updateTodo: (todoItem: ITodoData) => ITodoData
+  ) => boolean
 ) {
   const { contextTodoList, setContextTodoList } = useTodoContext()
   const handleEvent = async (
     event: FormEvent<HTMLFormElement> | ChangeEvent<HTMLInputElement>
   ) => {
     try {
-      if (!validateUpdate(event)) return
+      if (validateUpdate && !validateUpdate(event)) {
+        return
+      }
 
-      const updatedTodo = updateTodo(todoItem)
+      const updatedTodo = updateTodo?.(todoItem)
 
       const response = await axiosClient.put(
         `todos/${todoItem.id}`,
@@ -35,7 +37,7 @@ export default function useUpdateTodo(
         })
         setContextTodoList?.(updatedContextTodoList ?? ([] as ITodoData[]))
 
-        updateCompleteCallback()
+        updateCompleteCallback?.()
       }
     } catch (error: any) {
       const errorStatus = error.response?.status

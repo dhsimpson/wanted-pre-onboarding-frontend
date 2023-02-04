@@ -13,6 +13,15 @@ export default function UpdateTodoMode({
   const [todoData, setTodoData] = useState(todoItem.todo)
   const handleSubmit = useUpdateTodo(
     todoItem,
+    (todoItem) => {
+      return Object.assign({}, todoItem, {
+        todo: todoData
+      })
+    },
+    () => {
+      alert('todo 수정을 완료 하였습니다!')
+      setIsUpdateMode(false)
+    },
     (event) => {
       event.preventDefault()
       const target = event.target as ITodoFormData
@@ -21,15 +30,6 @@ export default function UpdateTodoMode({
         return false
       }
       return true
-    },
-    () => {
-      alert('todo 수정을 완료 하였습니다!')
-      setIsUpdateMode(false)
-    },
-    (todoItem) => {
-      return Object.assign({}, todoItem, {
-        todo: todoData
-      })
     }
   )
 

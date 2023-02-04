@@ -10,18 +10,11 @@ export default function ShowTodoMode({
   setIsUpdateMode: React.Dispatch<React.SetStateAction<boolean>>
 }) {
   const handleDelete = useDeleteTodo(todoItem)
-  const handleCheckBox = useUpdateTodo(
-    todoItem,
-    () => true,
-    () => {
-      return
-    },
-    (todoItem) => {
-      return Object.assign({}, todoItem, {
-        isCompleted: !todoItem.isCompleted
-      })
-    }
-  )
+  const handleCheckBox = useUpdateTodo(todoItem, (todoItem) => {
+    return Object.assign({}, todoItem, {
+      isCompleted: !todoItem.isCompleted
+    })
+  })
 
   return (
     <>
