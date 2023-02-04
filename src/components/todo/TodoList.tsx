@@ -1,8 +1,9 @@
 import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { getTodoList } from 'api/todo'
-import { ITodoData } from '../../interfaces/ITodoData'
+import { ITodoData } from 'interfaces/ITodoData'
 import TodoItem from './TodoItem'
+
 export default function TodoList() {
   const [todoList, setTodoList] = useState([])
   const navigate = useNavigate()
@@ -19,7 +20,7 @@ export default function TodoList() {
   return (
     <>
       {todoList.map((todoItem: ITodoData) => {
-        return <TodoItem {...todoItem} />
+        return <TodoItem {...todoItem} key={todoItem.id} />
       })}
     </>
   )

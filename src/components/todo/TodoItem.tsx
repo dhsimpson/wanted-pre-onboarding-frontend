@@ -1,14 +1,17 @@
 import { ITodoData } from 'interfaces/ITodoData'
+import { useState } from 'react'
+import ShowTodoMode from './ShowTodoMode'
+import UpdateTodoMode from './UpdateTodoMode'
 
 export default function TodoItem(todoItem: ITodoData) {
+  const [isUpdateMode, setIsUpdateMode] = useState(false)
   return (
     <li>
-      <label>
-        <input type="checkbox" checked={todoItem.isCompleted} />
-        <span>{todoItem.todo}</span>
-      </label>
-      <button data-testid="modify-button">수정</button>
-      <button data-testid="delete-button">삭제</button>
+      {isUpdateMode ? (
+        <UpdateTodoMode todoItem={todoItem} setIsUpdateMode={setIsUpdateMode} />
+      ) : (
+        <ShowTodoMode todoItem={todoItem} setIsUpdateMode={setIsUpdateMode} />
+      )}
     </li>
   )
 }
