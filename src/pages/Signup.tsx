@@ -19,10 +19,12 @@ export default function Signup() {
   } = useAuthForm(async (target: IAuthFormData) => {
     // axios
     const responsStatus = await signUp(target)
+    // TODO : e.target 말고 useAuthForm 이 {email, password} 객체를 반환하게 해서 사용할까?
     if (responsStatus === 201) {
       navigate('/signin')
     }
   })
+
   return (
     <form onSubmit={handleSubmit}>
       <input
