@@ -1,4 +1,4 @@
-import axiosClient from 'customClients/axiosClient'
+import { deleteTodoList } from 'api/todo'
 import { ITodoData } from 'interfaces/ITodo'
 import useTodoContext from './useTodoContext'
 
@@ -8,22 +8,15 @@ export default function useDeleteTodo(todoItem: ITodoData) {
   async function handleDelete() {
     const willDelete = confirm('정말 삭제하시겠습니까?')
     if (willDelete) {
-      try {
-        const response = await axiosClient.delete(`todos/${todoItem.id}`)
+      deleteTodoList(todoItem).then((response) => {
         if (response.status === 204) {
           alert('삭제 완료되었습니다!')
           const deletedContextTodoList = contextTodoList?.filter(
             (todo) => todo.id != todoItem.id
           )
-          console.log(contextTodoList)
-
           setContextTodoList?.(deletedContextTodoList ?? ([] as ITodoData[]))
         }
-      } catch (error: any) {
-        const errorStatus = error.response?.status
-        alert(errorStatus + '!!')
-        console.error(error)
-      }
+      })
     }
   }
   return handleDelete

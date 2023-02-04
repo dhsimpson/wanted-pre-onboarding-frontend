@@ -16,7 +16,7 @@ export default function useAddTodoList() {
     }
 
     addTodoList(target.todo.value).then((response) => {
-      if (response?.status === 201) {
+      if (response.status === 201) {
         alert('todo 가 추가되었습니다!')
         setContextTodoList?.([...(contextTodoList ?? []), response.data])
       }
