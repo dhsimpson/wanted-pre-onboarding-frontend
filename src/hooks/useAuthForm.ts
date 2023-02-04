@@ -1,6 +1,6 @@
 import IAuthFormData from 'interfaces/IAuthFormData'
 import { FormEvent, Dispatch, SetStateAction, useState } from 'react'
-import { canSubmit } from 'utils/validate'
+import { canSubmit } from 'utils/validateAuth'
 import { useNavigate } from 'react-router-dom'
 
 export default function useAuthForm(

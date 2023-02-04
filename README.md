@@ -59,6 +59,7 @@ c.f.) api는 https://pre-onboarding-selection-task.shop/ 로 domain을 잡아주
 2. suspense(비동기 데이터 response wait 상태 처리)
 3. 수정, 삭제 시 확인 요청을 위해 alert 나 modal popup
 4. 서버 응답 코드에 따라 처리
+5. 서버 응답 코드 같은 것 const 로 변경하기
 
 > ## 참고한 자료들
 
