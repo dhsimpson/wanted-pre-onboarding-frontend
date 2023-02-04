@@ -28,10 +28,6 @@ export default function useAddTodoList() {
       }
     } catch (error: any) {
       const errorStatus = error.response?.status
-      // if (errorStatus === 401) {
-      //   alert('다시 로그인 해주세요!')
-      // }
-      // return errorStatus
       alert(errorStatus + '!!')
       console.error(error)
     }

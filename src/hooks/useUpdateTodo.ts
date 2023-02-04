@@ -1,17 +1,30 @@
 import axiosClient from 'customClients/axiosClient'
 import { ITodoData } from 'interfaces/ITodo'
-import { ChangeEvent } from 'react'
+import { ChangeEvent, FormEvent } from 'react'
 import useTodoContext from './useTodoContext'
 
 // 이 친구는 checkbox 로직, todo 로직 주입할 수 있도록 변경 필요
-export default function useUpdateTodo(todoItem: ITodoData) {
+export default function useUpdateTodo(
+  todoItem: ITodoData,
+  validateUpdate: (
+    event: FormEvent<HTMLFormElement> | ChangeEvent<HTMLInputElement>
+  ) => boolean,
+  updateCompleteCallback: () => void,
+  updateTodo: (todoItem: ITodoData) => ITodoData
+) {
   const { contextTodoList, setContextTodoList } = useTodoContext()
-  const handleCheckBox = async (event: ChangeEvent<HTMLInputElement>) => {
+  const handleEvent = async (
+    event: FormEvent<HTMLFormElement> | ChangeEvent<HTMLInputElement>
+  ) => {
     try {
-      const response = await axiosClient.put(`todos/${todoItem.id}`, {
-        todo: todoItem.todo,
-        isCompleted: !todoItem.isCompleted
-      })
+      if (!validateUpdate(event)) return
+
+      const updatedTodo = updateTodo(todoItem)
+
+      const response = await axiosClient.put(
+        `todos/${todoItem.id}`,
+        updatedTodo
+      )
 
       if (response.status === 200) {
         const updatedContextTodoList = contextTodoList?.map((todo) => {
@@ -21,16 +34,14 @@ export default function useUpdateTodo(todoItem: ITodoData) {
           return todo
         })
         setContextTodoList?.(updatedContextTodoList ?? ([] as ITodoData[]))
+
+        updateCompleteCallback()
       }
     } catch (error: any) {
       const errorStatus = error.response?.status
-      // if (errorStatus === 401) {
-      //   alert('다시 로그인 해주세요!')
-      // }
-      // return errorStatus
       alert(errorStatus + '!!')
       console.error(error)
     }
   }
-  return handleCheckBox
+  return handleEvent
 }

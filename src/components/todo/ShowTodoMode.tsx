@@ -1,6 +1,6 @@
 import { ITodoData } from 'interfaces/ITodo'
 import useDeleteTodo from 'hooks/useDeleteTodo'
-import useUpdateTodo from '../../hooks/useUpdateTodo'
+import useUpdateTodo from 'hooks/useUpdateTodo'
 
 export default function ShowTodoMode({
   todoItem,
@@ -10,7 +10,18 @@ export default function ShowTodoMode({
   setIsUpdateMode: React.Dispatch<React.SetStateAction<boolean>>
 }) {
   const handleDelete = useDeleteTodo(todoItem)
-  const handleCheckBox = useUpdateTodo(todoItem)
+  const handleCheckBox = useUpdateTodo(
+    todoItem,
+    () => true,
+    () => {
+      return
+    },
+    (todoItem) => {
+      return Object.assign({}, todoItem, {
+        isCompleted: !todoItem.isCompleted
+      })
+    }
+  )
 
   return (
     <>
