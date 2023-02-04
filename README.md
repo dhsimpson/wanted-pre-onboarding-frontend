@@ -38,14 +38,14 @@ c.f.) api는 https://pre-onboarding-selection-task.shop/ 로 domain을 잡아주
 2. Todo List 기능
    1. [Assignment5](https://github.com/walking-sunset/selection-task#:~:text=2.%20TODO%20LIST-,Assignment%205,-/todo%EA%B2%BD%EB%A1%9C%EC%97%90%20%EC%A0%91%EC%86%8D%ED%95%98%EB%A9%B4)
       - [x] /todo경로에 접속하면 투두 리스트의 목록을 볼 수 있도록 해주세요
-      - [ ] 목록에서는 TODO의 내용과 완료 여부가 표시되어야 합니다.
+      - [x] 목록에서는 TODO의 내용과 완료 여부가 표시되어야 합니다.
       - [x] TODO의 완료 여부는 \<input type="checkbox" />를 통해 표현해주세요
       - [x] TODO는 \<li> tag를 이용해 감싸주세요
    2. [Assignment 6](https://github.com/walking-sunset/selection-task#:~:text=%3C/li%3E-,Assignment%206,-%EB%A6%AC%EC%8A%A4%ED%8A%B8%20%ED%8E%98%EC%9D%B4%EC%A7%80%EC%97%90%20%EC%83%88%EB%A1%9C%EC%9A%B4)
       - [x] 리스트 페이지에 새로운 TODO를 입력할 수 있는 input과 추가 button을 만들어주세요
       - [ ] 추가 button을 클릭하면 입력 input의 내용이 새로운 TODO로 추가되도록 해주세요
    3. [Assignment 7](https://github.com/walking-sunset/selection-task#:~:text=%EB%A1%9C%20%EC%B6%94%EA%B0%80%EB%90%98%EB%8F%84%EB%A1%9D%20%ED%95%B4%EC%A3%BC%EC%84%B8%EC%9A%94-,Assignment%207,-TODO%EC%9D%98%20%EC%B2%B4%ED%81%AC%EB%B0%95%EC%8A%A4%EB%A5%BC)
-      - [ ] TODO의 체크박스를 통해 완료 여부를 수정할 수 있도록 해주세요.
+      - [x] TODO의 체크박스를 통해 완료 여부를 수정할 수 있도록 해주세요.
    4. [Assignment 8](https://github.com/walking-sunset/selection-task#:~:text=%EC%88%98%20%EC%9E%88%EB%8F%84%EB%A1%9D%20%ED%95%B4%EC%A3%BC%EC%84%B8%EC%9A%94.-,Assignment%208,-TODO%20%EC%9A%B0%EC%B8%A1%EC%97%90%20%EC%88%98%EC%A0%95%EB%B2%84%ED%8A%BC%EA%B3%BC)
       - [x] TODO 우측에 수정버튼과 삭제 버튼을 만들어주세요
    5. [Assignment 9](https://github.com/walking-sunset/selection-task#:~:text=%3C/li%3E-,Assignment%209,-%ED%88%AC%EB%91%90%20%EB%A6%AC%EC%8A%A4%ED%8A%B8%EC%9D%98%20%EC%82%AD%EC%A0%9C)
