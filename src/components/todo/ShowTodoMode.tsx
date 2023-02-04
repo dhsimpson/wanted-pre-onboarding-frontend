@@ -10,11 +10,7 @@ export default function ShowTodoMode({
   setIsUpdateMode: React.Dispatch<React.SetStateAction<boolean>>
 }) {
   const handleDelete = useDeleteTodo(todoItem)
-  const handleCheckBox = useUpdateTodo(todoItem, (todoItem) => {
-    return Object.assign({}, todoItem, {
-      isCompleted: !todoItem.isCompleted
-    })
-  })
+  const handleCheckBox = useUpdateTodo(todoItem, updateTodo())
 
   return (
     <>
@@ -34,4 +30,11 @@ export default function ShowTodoMode({
       </button>
     </>
   )
+}
+function updateTodo(): (todoItem: ITodoData) => ITodoData {
+  return (todoItem) => {
+    return Object.assign({}, todoItem, {
+      isCompleted: !todoItem.isCompleted
+    })
+  }
 }
