@@ -1,6 +1,7 @@
+import TodoContext from 'context/TodoContext'
 import axiosClient from 'customClients/axiosClient'
 import { ITodoData } from 'interfaces/ITodo'
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent, useContext, useState } from 'react'
 
 export default function ShowTodoMode({
   todoItem,
@@ -9,6 +10,13 @@ export default function ShowTodoMode({
   todoItem: ITodoData
   setIsUpdateMode: React.Dispatch<React.SetStateAction<boolean>>
 }) {
+  const todoContext = useContext(TodoContext)
+
+  const { contextTodoList, setContextTodoList } = todoContext ?? {
+    contextTodoList: undefined,
+    setContextTodoList: undefined
+  }
+
   async function handleDelete() {
     const willDelete = confirm('정말 삭제하시겠습니까?')
     if (willDelete) {
@@ -16,6 +24,10 @@ export default function ShowTodoMode({
         const response = await axiosClient.delete(`todos/${todoItem.id}`)
         if (response.status === 204) {
           alert('삭제 완료되었습니다!')
+          const deletedContextTodoList = contextTodoList?.filter(
+            (todo) => todo.id != todoItem.id
+          )
+          setContextTodoList?.(deletedContextTodoList ?? ([] as ITodoData[]))
         }
       } catch (error: any) {
         const errorStatus = error.response?.status
