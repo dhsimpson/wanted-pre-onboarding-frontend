@@ -62,6 +62,7 @@ c.f.) api는 https://pre-onboarding-selection-task.shop/ 로 domain을 잡아주
 5. 서버 응답 코드 같은 것 const 로 변경하기
 6. todo list 업데이트 시 모든 todoitem 컴포넌트가 리렌더링 되는 것 같은데, useMemo 로 이를 방지 가능한지?
 7. 상용 환경에서 log 안찍히도록??
+8. axios 쿼리 로직 api >todo.ts 로 옮겨야함
 
 > ## 참고한 자료들
 

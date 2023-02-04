@@ -1,4 +1,4 @@
-import useAddTodoList from 'hooks/useAddTodoList'
+import useAddTodoList from 'hooks/useAddTodo'
 
 export default function AddTodo() {
   const handleSubmit = useAddTodoList()
