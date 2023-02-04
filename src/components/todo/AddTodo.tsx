@@ -1,10 +1,7 @@
 import axiosClient from 'customClients/axiosClient'
+import { ITodoFormData } from 'interfaces/ITodo'
 import { FormEvent } from 'react'
 import { canSubmit } from 'utils/validateTodo'
-
-interface ITodoFormData extends EventTarget {
-  todo: { value: string }
-}
 
 export default function AddTodo() {
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {

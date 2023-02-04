@@ -1,4 +1,4 @@
-import { ITodoData } from 'interfaces/ITodoData'
+import { ITodoData } from 'interfaces/ITodo'
 import { useState } from 'react'
 import ShowTodoMode from './ShowTodoMode'
 import UpdateTodoMode from './UpdateTodoMode'

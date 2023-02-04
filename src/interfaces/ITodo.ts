@@ -4,3 +4,7 @@ export interface ITodoData {
   isCompleted: boolean
   userId: number
 }
+
+export interface ITodoFormData extends EventTarget {
+  todo: { value: string }
+}

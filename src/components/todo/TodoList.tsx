@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { getTodoList } from 'api/todo'
-import { ITodoData } from 'interfaces/ITodoData'
+import { ITodoData } from 'interfaces/ITodo'
 import TodoItem from './TodoItem'
 
 export default function TodoList() {

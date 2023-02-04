@@ -1,5 +1,5 @@
 import axiosClient from 'customClients/axiosClient'
-import { ITodoData } from 'interfaces/ITodoData'
+import { ITodoData } from 'interfaces/ITodo'
 
 export default function ShowTodoMode({
   todoItem,
