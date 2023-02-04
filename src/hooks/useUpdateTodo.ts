@@ -1,5 +1,5 @@
 import { updateTodoList } from 'api/todo'
-import axiosClient from 'customClients/axiosClient'
+import { OK } from 'consts/api'
 import { ITodoData } from 'interfaces/ITodo'
 import { ChangeEvent, FormEvent } from 'react'
 import useTodoContext from './useTodoContext'
@@ -21,7 +21,7 @@ export default function useUpdateTodo(
       return
     }
     updateTodoList(todoItem, updateTodo).then((response) => {
-      if (response.status === 200) {
+      if (response.status === OK) {
         const updatedContextTodoList = contextTodoList?.map((todo) => {
           if (todo.id === response.data.id) {
             return response.data

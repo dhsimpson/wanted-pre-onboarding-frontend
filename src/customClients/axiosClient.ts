@@ -1,11 +1,6 @@
-import axios, {
-  AxiosRequestConfig,
-  AxiosResponse,
-  AxiosError,
-  InternalAxiosRequestConfig
-} from 'axios'
+import axios, { InternalAxiosRequestConfig } from 'axios'
 import { getToken } from 'utils/token'
-import { baseUrl } from '../consts/api'
+import { baseUrl } from 'consts/api'
 
 const axiosClient = axios.create({ baseURL: baseUrl })
 
@@ -15,12 +10,8 @@ axiosClient.interceptors.request.use(
     // signup, signin 은 토큰 필요없음
     if (paths[0] !== 'auth') {
       const authToken = getToken()
-      //localStorage.getItem('authtoken');
       if (authToken) {
         config.headers.setAuthorization(`Bearer ${authToken}`)
-        //   config.headers = {
-        //     Authorization: `Bearer ${authToken}`,
-        //   };
       }
     }
     return config

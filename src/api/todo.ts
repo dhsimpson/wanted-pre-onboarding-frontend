@@ -1,3 +1,4 @@
+import { UNAUTHORIZED } from 'consts/api'
 import axiosClient from 'customClients/axiosClient'
 import { ITodoData } from 'interfaces/ITodo'
 import { deleteToken } from 'utils/token'
@@ -23,7 +24,7 @@ export const getTodoList = async () => {
     return response.data
   } catch (error: any) {
     const errorStatus = error.response?.status
-    if (errorStatus === 401) {
+    if (errorStatus === UNAUTHORIZED) {
       alert('다시 로그인 해주세요!')
       deleteToken()
     }

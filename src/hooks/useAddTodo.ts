@@ -1,4 +1,5 @@
 import { addTodoList } from 'api/todo'
+import { CREATED } from 'consts/api'
 import { ITodoFormData } from 'interfaces/ITodo'
 import { FormEvent } from 'react'
 import { canSubmit } from 'utils/validateTodo'
@@ -16,7 +17,7 @@ export default function useAddTodoList() {
     }
 
     addTodoList(target.todo.value).then((response) => {
-      if (response.status === 201) {
+      if (response.status === CREATED) {
         alert('todo 가 추가되었습니다!')
         setContextTodoList?.([...(contextTodoList ?? []), response.data])
       }
