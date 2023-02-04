@@ -32,6 +32,23 @@ export const getTodoList = async () => {
   }
 }
 //UPDATE
+export const updateTodoList = async (
+  todoItem: ITodoData,
+  updateTodo: (todoItem: ITodoData) => ITodoData
+) => {
+  try {
+    const updatedTodo = updateTodo?.(todoItem)
+
+    const response = await axiosClient.put(`todos/${todoItem.id}`, updatedTodo)
+    return response
+  } catch (error: any) {
+    const errorStatus = error.response?.status
+    alert(errorStatus + '!!')
+    console.error(error)
+    return errorStatus
+  }
+}
+
 //DELETE
 export const deleteTodoList = async (todoItem: ITodoData) => {
   try {

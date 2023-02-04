@@ -1,3 +1,4 @@
+import { updateTodoList } from 'api/todo'
 import axiosClient from 'customClients/axiosClient'
 import { ITodoData } from 'interfaces/ITodo'
 import { ChangeEvent, FormEvent } from 'react'
@@ -16,18 +17,10 @@ export default function useUpdateTodo(
   const handleEvent = async (
     event: FormEvent<HTMLFormElement> | ChangeEvent<HTMLInputElement>
   ) => {
-    try {
-      if (validateUpdate && !validateUpdate(event)) {
-        return
-      }
-
-      const updatedTodo = updateTodo?.(todoItem)
-
-      const response = await axiosClient.put(
-        `todos/${todoItem.id}`,
-        updatedTodo
-      )
-
+    if (validateUpdate && !validateUpdate(event)) {
+      return
+    }
+    updateTodoList(todoItem, updateTodo).then((response) => {
       if (response.status === 200) {
         const updatedContextTodoList = contextTodoList?.map((todo) => {
           if (todo.id === response.data.id) {
@@ -39,11 +32,7 @@ export default function useUpdateTodo(
 
         updateCompleteCallback?.()
       }
-    } catch (error: any) {
-      const errorStatus = error.response?.status
-      alert(errorStatus + '!!')
-      console.error(error)
-    }
+    })
   }
   return handleEvent
 }
