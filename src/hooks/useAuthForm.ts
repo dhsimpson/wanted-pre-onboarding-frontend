@@ -10,7 +10,7 @@ export default function useAuthForm(
     event.preventDefault()
 
     const target = event.target as IAuthFormData
-    // 전달 받은 callback을 실행하는 부분
+
     submitCallback(target)
   }
   const handleChange = (

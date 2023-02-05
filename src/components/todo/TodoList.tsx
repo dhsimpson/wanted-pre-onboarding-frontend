@@ -1,35 +1,19 @@
-import { useNavigate } from 'react-router-dom'
-import { useContext, useEffect } from 'react'
-import { getTodoList } from 'api/todo'
 import { ITodoData } from 'interfaces/ITodo'
 import TodoItem from './TodoItem'
-import TodoContext from 'context/TodoContext'
+import useGetTodoList from 'hooks/useGetTodoList'
 
 export default function TodoList() {
-  const todoContext = useContext(TodoContext)
-
-  const { contextTodoList, setContextTodoList } = todoContext ?? {
-    contextTodoList: undefined,
-    setContextTodoList: undefined
-  }
-
-  const navigate = useNavigate()
-
-  useEffect(() => {
-    getTodoList().then((data) => {
-      if (data === 401) {
-        navigate('/signin', { replace: true })
-        return
-      }
-      setContextTodoList?.(data)
-    })
-  }, [])
+  const { contextTodoList, isLoading } = useGetTodoList()
 
   return (
     <>
-      {contextTodoList?.map((todoItem: ITodoData) => {
-        return <TodoItem {...todoItem} key={todoItem.id} />
-      })}
+      {isLoading ? (
+        <div>로딩중!</div>
+      ) : (
+        contextTodoList?.map((todoItem: ITodoData) => {
+          return <TodoItem {...todoItem} key={todoItem.id} />
+        })
+      )}
     </>
   )
 }

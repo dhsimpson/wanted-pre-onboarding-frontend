@@ -1,8 +1,7 @@
-import TodoContext from 'context/TodoContext'
-import axiosClient from 'customClients/axiosClient'
 import { ITodoData, ITodoFormData } from 'interfaces/ITodo'
-import { FormEvent, useContext, useState } from 'react'
+import { ChangeEvent, FormEvent, useState } from 'react'
 import { canSubmit } from 'utils/validateTodo'
+import useUpdateTodo from 'hooks/useUpdateTodo'
 
 export default function UpdateTodoMode({
   todoItem,
@@ -11,52 +10,18 @@ export default function UpdateTodoMode({
   todoItem: ITodoData
   setIsUpdateMode: React.Dispatch<React.SetStateAction<boolean>>
 }) {
-  const todoContext = useContext(TodoContext)
-
-  const { contextTodoList, setContextTodoList } = todoContext ?? {
-    contextTodoList: undefined,
-    setContextTodoList: undefined
-  }
   const [todoData, setTodoData] = useState(todoItem.todo)
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    const target = event.target as ITodoFormData
-    try {
-      if (!canSubmit(target.todo.value)) {
-        alert('todo 가 입력되지 않았습니다!')
-        return
-      }
+  const handleSubmit = useUpdateTodo(
+    todoItem,
+    updateTodo(todoData),
+    updateCompleteCallback(setIsUpdateMode),
+    validateUpdate()
+  )
 
-      const response = await axiosClient.put(`todos/${todoItem.id}`, {
-        todo: target.todo.value,
-        isCompleted: todoItem.isCompleted
-      })
-
-      if (response.status === 200) {
-        alert('todo 수정을 완료 하였습니다!')
-
-        const updatedContextTodoList = contextTodoList?.map((todo) => {
-          if (todo.id === response.data.id) {
-            return response.data
-          }
-          return todo
-        })
-        setContextTodoList?.(updatedContextTodoList ?? ([] as ITodoData[]))
-        setIsUpdateMode(false)
-      }
-    } catch (error: any) {
-      const errorStatus = error.response?.status
-      // if (errorStatus === 401) {
-      //   alert('다시 로그인 해주세요!')
-      // }
-      // return errorStatus
-      alert(errorStatus + '!!')
-      console.error(error)
-    }
-  }
   const handleChange = (event: FormEvent<HTMLInputElement>) => {
     setTodoData(event.currentTarget.value)
   }
+
   return (
     <form onSubmit={handleSubmit}>
       <input
@@ -75,4 +40,34 @@ export default function UpdateTodoMode({
       </button>
     </form>
   )
+}
+
+function updateTodo(todoData: string): (todoItem: ITodoData) => ITodoData {
+  return (todoItem) =>
+    Object.assign({}, todoItem, {
+      todo: todoData
+    })
+}
+
+function updateCompleteCallback(
+  setIsUpdateMode: React.Dispatch<React.SetStateAction<boolean>>
+): (() => void) | undefined {
+  return () => {
+    alert('todo 수정을 완료 하였습니다!')
+    setIsUpdateMode(false)
+  }
+}
+
+function validateUpdate() {
+  return (
+    event: FormEvent<HTMLFormElement> | ChangeEvent<HTMLInputElement>
+  ) => {
+    event.preventDefault()
+    const target = event.target as ITodoFormData
+    if (!canSubmit(target.todo.value)) {
+      alert('todo 가 입력되지 않았습니다!')
+      return false
+    }
+    return true
+  }
 }

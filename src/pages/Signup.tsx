@@ -3,6 +3,7 @@ import useAuthForm from '../hooks/useAuthForm'
 import { signUp } from '../api/auth'
 import { isTokenExist } from '../utils/token'
 import { Navigate } from 'react-router-dom'
+import { CREATED } from 'consts/api'
 
 export default function Signup() {
   if (isTokenExist()) {
@@ -20,7 +21,7 @@ export default function Signup() {
     // axios
     const responsStatus = await signUp(target)
     // TODO : e.target 말고 useAuthForm 이 {email, password} 객체를 반환하게 해서 사용할까?
-    if (responsStatus === 201) {
+    if (responsStatus === CREATED) {
       navigate('/signin')
     }
   })
