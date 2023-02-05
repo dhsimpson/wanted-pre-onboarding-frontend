@@ -6,6 +6,7 @@ import { Navigate } from 'react-router-dom'
 import { CREATED } from 'consts/api'
 import InputPassword from 'components/common/InputPassword'
 import InputEmail from 'components/common/InputEmail'
+import SubmitButton from 'components/common/SubmitButton'
 
 export default function Signup() {
   if (isTokenExist()) {
@@ -32,9 +33,11 @@ export default function Signup() {
     <form onSubmit={handleSubmit}>
       <InputEmail handleChange={handleChange} setAccountData={setEmail} />
       <InputPassword handleChange={handleChange} setAccountData={setPassword} />
-      <button data-testid="signup-button" type="submit" disabled={!isValid()}>
-        회원가입
-      </button>
+      <SubmitButton
+        isValid={isValid}
+        testId="signup-button"
+        name={'회원가입'}
+      />
     </form>
   )
 }
