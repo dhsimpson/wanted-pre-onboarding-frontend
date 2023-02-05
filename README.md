@@ -7,9 +7,12 @@
 
 > ## 화면(url 기준)
 
-1. /signup
+1. /signup  
+   회원가입 기능이 있으며...
 2. /signin
-3. /todo
+3. /todo  
+   특이사항 - 서버 응답에 setTimeout(1초) 를 줘 강제 suspense 동작  
+   <img src="./public/images/suspense.gif" alt="suspense"/>
 
 > ## 사용 가능 API (Back End)
 
@@ -56,13 +59,13 @@ c.f.) api는 https://pre-onboarding-selection-task.shop/ 로 domain을 잡아주
 > c.f.)
 
 1. fallback(error 처리)
-2. suspense(비동기 데이터 response wait 상태 처리)
-3. 수정, 삭제 시 확인 요청을 위해 alert 나 modal popup
-4. 서버 응답 코드에 따라 처리
-5. 서버 응답 코드 같은 것 const 로 변경하기
-6. todo list 업데이트 시 모든 todoitem 컴포넌트가 리렌더링 되는 것 같은데, useMemo 로 이를 방지 가능한지?
-7. 상용 환경에서 log 안찍히도록??
-8. axios 쿼리 로직 api >todo.ts 로 옮겨야함
+2. 수정, 삭제 시 확인 요청을 위해 alert 나 modal popup
+3. todo list 업데이트 시 모든 todoitem 컴포넌트가 리렌더링 되는 것 같은데, useMemo 로 이를 방지 가능한지?
+4. 상용 환경에서 log 안찍히도록??
+5. navbar 만들어서 라우팅 쉽게 하기
+6. 로그아웃 버튼 만들어서 로그아웃 편하게 하기.
+7. 패스워드 입력 영역은 type="password" 처리하기
+8. 패스워드 입력 영역 같은 공통 사용 가능 tag 는 (testid 가 같거나) common 으로 리펙터링하기
 
 > ## 참고한 자료들
 
