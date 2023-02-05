@@ -8,6 +8,7 @@ import { useState } from 'react'
 
 export default function Todo() {
   if (!isTokenExist()) {
+    alert('로그인 해주세요!')
     return <Navigate to="/signin" replace />
   }
 
