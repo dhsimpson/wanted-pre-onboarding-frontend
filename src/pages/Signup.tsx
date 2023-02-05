@@ -1,9 +1,12 @@
 import IAuthFormData from 'interfaces/IAuthFormData'
-import useAuthForm from '../hooks/useAuthForm'
-import { signUp } from '../api/auth'
-import { isTokenExist } from '../utils/token'
+import useAuthForm from 'hooks/useAuthForm'
+import { signUp } from 'api/auth'
+import { isTokenExist } from 'utils/token'
 import { Navigate } from 'react-router-dom'
 import { CREATED } from 'consts/api'
+import InputPassword from 'components/common/InputPassword'
+import InputEmail from 'components/common/InputEmail'
+import SubmitButton from 'components/common/SubmitButton'
 
 export default function Signup() {
   if (isTokenExist()) {
@@ -20,7 +23,6 @@ export default function Signup() {
   } = useAuthForm(async (target: IAuthFormData) => {
     // axios
     const responsStatus = await signUp(target)
-    // TODO : e.target 말고 useAuthForm 이 {email, password} 객체를 반환하게 해서 사용할까?
     if (responsStatus === CREATED) {
       navigate('/signin')
     }
@@ -28,19 +30,13 @@ export default function Signup() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input
-        data-testid="email-input"
-        name="email"
-        onChange={(e) => handleChange(e, setEmail)}
+      <InputEmail handleChange={handleChange} setAccountData={setEmail} />
+      <InputPassword handleChange={handleChange} setAccountData={setPassword} />
+      <SubmitButton
+        isValid={isValid}
+        testId="signup-button"
+        name={'회원가입'}
       />
-      <input
-        data-testid="password-input"
-        name="password"
-        onChange={(e) => handleChange(e, setPassword)}
-      />
-      <button data-testid="signup-button" type="submit" disabled={!isValid()}>
-        회원가입
-      </button>
     </form>
   )
 }

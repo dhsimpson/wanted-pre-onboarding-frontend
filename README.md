@@ -64,8 +64,6 @@ c.f.) api는 https://pre-onboarding-selection-task.shop/ 로 domain을 잡아주
 4. 상용 환경에서 log 안찍히도록??
 5. navbar 만들어서 라우팅 쉽게 하기
 6. 로그아웃 버튼 만들어서 로그아웃 편하게 하기.
-7. 패스워드 입력 영역은 type="password" 처리하기
-8. 패스워드 입력 영역 같은 공통 사용 가능 tag 는 (testid 가 같거나) common 으로 리펙터링하기
 
 > ## 참고한 자료들
 
