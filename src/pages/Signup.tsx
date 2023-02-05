@@ -5,6 +5,7 @@ import { isTokenExist } from 'utils/token'
 import { Navigate } from 'react-router-dom'
 import { CREATED } from 'consts/api'
 import InputPassword from 'components/common/InputPassword'
+import InputEmail from 'components/common/InputEmail'
 
 export default function Signup() {
   if (isTokenExist()) {
@@ -29,12 +30,8 @@ export default function Signup() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input
-        data-testid="email-input"
-        name="email"
-        onChange={(e) => handleChange(e, setEmail)}
-      />
-      <InputPassword handleChange={handleChange} setPassword={setPassword} />
+      <InputEmail handleChange={handleChange} setAccountData={setEmail} />
+      <InputPassword handleChange={handleChange} setAccountData={setPassword} />
       <button data-testid="signup-button" type="submit" disabled={!isValid()}>
         회원가입
       </button>
