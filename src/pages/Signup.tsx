@@ -1,9 +1,10 @@
 import IAuthFormData from 'interfaces/IAuthFormData'
-import useAuthForm from '../hooks/useAuthForm'
-import { signUp } from '../api/auth'
-import { isTokenExist } from '../utils/token'
+import useAuthForm from 'hooks/useAuthForm'
+import { signUp } from 'api/auth'
+import { isTokenExist } from 'utils/token'
 import { Navigate } from 'react-router-dom'
 import { CREATED } from 'consts/api'
+import InputPassword from 'components/common/InputPassword'
 
 export default function Signup() {
   if (isTokenExist()) {
@@ -33,11 +34,7 @@ export default function Signup() {
         name="email"
         onChange={(e) => handleChange(e, setEmail)}
       />
-      <input
-        data-testid="password-input"
-        name="password"
-        onChange={(e) => handleChange(e, setPassword)}
-      />
+      <InputPassword handleChange={handleChange} setPassword={setPassword} />
       <button data-testid="signup-button" type="submit" disabled={!isValid()}>
         회원가입
       </button>

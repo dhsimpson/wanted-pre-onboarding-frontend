@@ -1,8 +1,9 @@
+import InputPassword from 'components/common/InputPassword'
 import useAuthForm from 'hooks/useAuthForm'
 import IAuthFormData from 'interfaces/IAuthFormData'
 import { Navigate } from 'react-router-dom'
 import { isTokenExist } from 'utils/token'
-import { signIn } from '../api/auth'
+import { signIn } from 'api/auth'
 
 export default function Signin() {
   if (isTokenExist()) {
@@ -30,11 +31,7 @@ export default function Signin() {
         name="email"
         onChange={(e) => handleChange(e, setEmail)}
       />
-      <input
-        data-testid="password-input"
-        name="password"
-        onChange={(e) => handleChange(e, setPassword)}
-      />
+      <InputPassword handleChange={handleChange} setPassword={setPassword} />
       <button data-testid="signin-button" type="submit" disabled={!isValid()}>
         로그인
       </button>
