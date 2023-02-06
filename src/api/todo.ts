@@ -3,10 +3,10 @@ import axiosClient from 'customClients/axiosClient'
 import {
   IDefaultResponse,
   ITodoAddRequest,
-  ITodoData,
   ITodoDataResponse,
   ITodoListResponse
-} from 'interfaces/ITodo'
+} from 'interfaces/IAxios'
+import { ITodoData } from 'interfaces/ITodo'
 import { deleteToken } from 'utils/token'
 
 //CREATE
