@@ -28,7 +28,7 @@ export default function useGetTodoList() {
       if (response.status !== OK) {
         setIsError(true)
       } else {
-        setContextTodoList?.(response.data)
+        setContextTodoList?.(response.data ?? [])
         setIsError(false)
       }
       setIsLoading(false)
