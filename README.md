@@ -14,8 +14,13 @@
    회원가입 기능이 있으며...
 2. /signin
 3. /todo  
-   특이사항 - 서버 응답에 setTimeout(1초) 를 줘 강제 suspense 동작  
-   <img src="./public/images/suspense.gif" alt="suspense"/>
+   특이사항 1. - 서버 응답에 setTimeout(1초) 를 줘 강제 suspense 동작  
+   <img src="./public/images/suspense.gif" alt="suspense"/>  
+   <br/>
+   특이사항 2. - memo 기능 이용해 불필요한 todo item 렌더링 방지  
+   |AS-IS|TO-BE|
+   |---|---|
+   |<img src="./public/images/no_memo.gif" alt="no_memo"/>|<img src="./public/images/memo.gif" alt="memo"/>|
 
 > ## 사용 가능 API (Back End)
 
