@@ -10,8 +10,7 @@
 0. NavBar  
    특이사항 - 로그인 된 경우에만 로그아웃 버튼이 노출 됨  
    <img src="./public/images/logout_button.gif" alt="logout_button"/>
-1. /signup  
-   회원가입 기능이 있으며...
+1. /signup
 2. /signin
 3. /todo  
     특이사항 1. - 서버 응답에 setTimeout(1초) 를 줘 강제 suspense 동작  
@@ -73,11 +72,13 @@
    6. [Assignment 10](https://github.com/walking-sunset/selection-task#:~:text=%EC%95%84%EC%9D%B4%ED%85%9C%EC%9D%B4%20%EC%82%AD%EC%A0%9C%EB%90%98%EB%8F%84%EB%A1%9D%20%ED%95%B4%EC%A3%BC%EC%84%B8%EC%9A%94-,Assignment%2010,-%ED%88%AC%EB%91%90%20%EB%A6%AC%EC%8A%A4%ED%8A%B8%EC%9D%98%20%EC%88%98%EC%A0%95)
       - [x] 투두 리스트의 수정 기능을 구현해주세요
 
-> c.f.)
+> 상용 환경
 
-2. 수정, 삭제 시 확인 요청을 위해 alert 나 modal popup
-3. 상용 환경에서 log 안찍히도록??
-4. axios req, resp 타입 정해주기(지금은 any)
+1. 상용 환경에서 console.log, console.warn 이 아무런 로그를 남기지 않도록 함.
+   |개발|상용|
+   |---|---|
+   |<img src="./public/images/all_log.gif" alt="all_log"/>|<img src="./public/images/only_error_log.gif" alt="only_error_log"/>|
+   // 2. axios req, resp 타입 정해주기(지금은 any)
 
 > ## 참고한 자료들
 
