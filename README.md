@@ -7,6 +7,9 @@
 
 > ## 화면(url 기준)
 
+0. NavBar  
+   특이사항 - 로그인 된 경우에만 로그아웃 버튼이 노출 됨  
+   <img src="./public/images/logout_button.gif" alt="logout_button"/>
 1. /signup  
    회원가입 기능이 있으며...
 2. /signin
@@ -62,8 +65,6 @@ c.f.) api는 https://pre-onboarding-selection-task.shop/ 로 domain을 잡아주
 2. 수정, 삭제 시 확인 요청을 위해 alert 나 modal popup
 3. todo list 업데이트 시 모든 todoitem 컴포넌트가 리렌더링 되는 것 같은데, useMemo 로 이를 방지 가능한지?
 4. 상용 환경에서 log 안찍히도록??
-5. navbar 만들어서 라우팅 쉽게 하기
-6. 로그아웃 버튼 만들어서 로그아웃 편하게 하기.
 
 > ## 참고한 자료들
 
