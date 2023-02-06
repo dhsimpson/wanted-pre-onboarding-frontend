@@ -14,18 +14,27 @@
    회원가입 기능이 있으며...
 2. /signin
 3. /todo  
-   특이사항 1. - 서버 응답에 setTimeout(1초) 를 줘 강제 suspense 동작  
-   <img src="./public/images/suspense.gif" alt="suspense"/>  
-   <br/>
+    특이사항 1. - 서버 응답에 setTimeout(1초) 를 줘 강제 suspense 동작  
+    <img src="./public/images/suspense.gif" alt="suspense"/>  
+    <br/>
    특이사항 2. - memo 기능 이용해 불필요한 todo item 렌더링 방지  
-   |AS-IS|TO-BE|
+    |AS-IS|TO-BE|
    |---|---|
    |<img src="./public/images/no_memo.gif" alt="no_memo"/>|<img src="./public/images/memo.gif" alt="memo"/>|
+   특이사항 3. - todo list 쿼리 error 발생시 다시시도하기 버튼을 통해 다시 쿼리
 
-> ## 사용 가능 API (Back End)
+   - Front-end 에서 axios 쿼리 timout 을 0.75 초로 설정
+   - 서버 응답에 강제 랜덤 timeout을 줘 (0.5~ 1.0 초) 랜덤하게 에러 발생하게 설정
+     <img src="./public/images/random_timeout.png"/>
+   - 에러 발생시 다시시도 버튼 클릭으로 리로딩 (retry count state 이용)
+     <img src="./public/images/error.gif"/>
 
-[API github 주소](https://github.com/walking-sunset/selection-task)  
-c.f.) api는 https://pre-onboarding-selection-task.shop/ 로 domain을 잡아주자
+   > ## 사용 가능 API (Back End)
+
+[API github 주소](https://github.com/walking-sunset/selection-task)
+
+- 상용 api는 https://pre-onboarding-selection-task.shop/
+- 로컬 api는 http://localhost:8000/
 
 1. /auth/signup - POST
 2. /auth/signin - POST
@@ -66,10 +75,9 @@ c.f.) api는 https://pre-onboarding-selection-task.shop/ 로 domain을 잡아주
 
 > c.f.)
 
-1. fallback(error 처리)
 2. 수정, 삭제 시 확인 요청을 위해 alert 나 modal popup
-3. todo list 업데이트 시 모든 todoitem 컴포넌트가 리렌더링 되는 것 같은데, useMemo 로 이를 방지 가능한지?
-4. 상용 환경에서 log 안찍히도록??
+3. 상용 환경에서 log 안찍히도록??
+4. axios req, resp 타입 정해주기(지금은 any)
 
 > ## 참고한 자료들
 
