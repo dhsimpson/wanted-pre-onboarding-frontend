@@ -20,8 +20,8 @@ export const addTodoList = async (todo: string) => {
 //READ
 export const getTodoList = async () => {
   try {
-    const response = await axiosClient.get('todos')
-    return response.data
+    const response = await axiosClient.get('todos', { timeout: 750 })
+    return response
   } catch (error: any) {
     const errorStatus = error.response?.status
     if (errorStatus === UNAUTHORIZED) {
@@ -29,7 +29,7 @@ export const getTodoList = async () => {
       deleteToken()
     }
     console.error(error)
-    return errorStatus
+    return { status: errorStatus, data: null }
   }
 }
 //UPDATE

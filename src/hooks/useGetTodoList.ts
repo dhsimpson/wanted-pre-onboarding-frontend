@@ -3,24 +3,43 @@ import { UNAUTHORIZED } from 'consts/api'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import useTodoContext from './useTodoContext'
+import { OK } from 'consts/api'
 
 export default function useGetTodoList() {
   const { contextTodoList, setContextTodoList } = useTodoContext()
   const [isLoading, setIsLoading] = useState(false)
+  const [isError, setIsError] = useState(false)
+  const [retryCount, setRetryCount] = useState(0)
 
   const navigate = useNavigate()
 
-  // 계속 리랜더링 되면서 실행 되는 것 같은데, useMemo 로 useEffect 없앨 수 있나?
+  const retry = () => {
+    setRetryCount(retryCount + 1)
+  }
+
   useEffect(() => {
     setIsLoading(true)
-    getTodoList().then((data) => {
-      if (data === UNAUTHORIZED) {
+    setIsError(false)
+    getTodoList().then((response) => {
+      if (response.status === UNAUTHORIZED) {
         navigate('/signin', { replace: true })
         return
       }
-      setContextTodoList?.(data)
+      if (response.status !== OK) {
+        setIsError(true)
+      } else {
+        setContextTodoList?.(response.data)
+        setIsError(false)
+      }
       setIsLoading(false)
     })
-  }, [])
-  return { contextTodoList, isLoading }
+  }, [retryCount])
+
+  return {
+    contextTodoList,
+    isLoading,
+    setIsLoading,
+    isError,
+    retry
+  }
 }
