@@ -1,17 +1,7 @@
-import { useNavigate } from 'react-router-dom'
-import { deleteToken } from 'utils/token'
+import useLogout from 'hooks/useLogout'
 
 export default function LogoutButton() {
-  const navigate = useNavigate()
-
-  const handleClick = () => {
-    const willLogouot = confirm('로그아웃 하시겠습니까?')
-    if (willLogouot) {
-      deleteToken()
-      alert('로그아웃 되었습니다!')
-      navigate('/signin')
-    }
-  }
+  const handleClick = useLogout()
 
   return (
     <button
