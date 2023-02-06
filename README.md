@@ -78,7 +78,6 @@
    |개발|상용|
    |---|---|
    |<img src="./public/images/all_log.gif" alt="all_log"/>|<img src="./public/images/only_error_log.gif" alt="only_error_log"/>|
-   // 2. axios req, resp 타입 정해주기(지금은 any)
 
 > ## 참고한 자료들
 
