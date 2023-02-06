@@ -39,6 +39,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@typescript-eslint/eslint-plugin", "virtual:a2271951ce64f3534549101d68f963fa24b2669d0a2f000f191c7063da8bd99c1f8c29e4a5afe85e4c01611744ae9f6afbb531225595ee96df65b46ae0f1a793#npm:5.50.0"],\
             ["@typescript-eslint/parser", "virtual:a2271951ce64f3534549101d68f963fa24b2669d0a2f000f191c7063da8bd99c1f8c29e4a5afe85e4c01611744ae9f6afbb531225595ee96df65b46ae0f1a793#npm:5.50.0"],\
             ["axios", "npm:1.3.1"],\
+            ["cross-env", "npm:7.0.3"],\
+            ["dotenv", "npm:16.0.3"],\
             ["eslint", "npm:8.33.0"],\
             ["eslint-config-prettier", "virtual:a2271951ce64f3534549101d68f963fa24b2669d0a2f000f191c7063da8bd99c1f8c29e4a5afe85e4c01611744ae9f6afbb531225595ee96df65b46ae0f1a793#npm:8.6.0"],\
             ["eslint-plugin-prettier", "virtual:a2271951ce64f3534549101d68f963fa24b2669d0a2f000f191c7063da8bd99c1f8c29e4a5afe85e4c01611744ae9f6afbb531225595ee96df65b46ae0f1a793#npm:4.2.1"],\
@@ -6854,6 +6856,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["cross-env", [\
+        ["npm:7.0.3", {\
+          "packageLocation": "./.yarn/cache/cross-env-npm-7.0.3-96d81820f4-26f2f3ea2a.zip/node_modules/cross-env/",\
+          "packageDependencies": [\
+            ["cross-env", "npm:7.0.3"],\
+            ["cross-spawn", "npm:7.0.3"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["cross-spawn", [\
         ["npm:7.0.3", {\
           "packageLocation": "./.yarn/cache/cross-spawn-npm-7.0.3-e4ff3e65b3-671cc7c728.zip/node_modules/cross-spawn/",\
@@ -7744,6 +7756,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/dotenv-npm-10.0.0-36b272df25-f412c5fe8c.zip/node_modules/dotenv/",\
           "packageDependencies": [\
             ["dotenv", "npm:10.0.0"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:16.0.3", {\
+          "packageLocation": "./.yarn/cache/dotenv-npm-16.0.3-4cc29121dc-afcf03f373.zip/node_modules/dotenv/",\
+          "packageDependencies": [\
+            ["dotenv", "npm:16.0.3"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -16942,6 +16961,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@typescript-eslint/eslint-plugin", "virtual:a2271951ce64f3534549101d68f963fa24b2669d0a2f000f191c7063da8bd99c1f8c29e4a5afe85e4c01611744ae9f6afbb531225595ee96df65b46ae0f1a793#npm:5.50.0"],\
             ["@typescript-eslint/parser", "virtual:a2271951ce64f3534549101d68f963fa24b2669d0a2f000f191c7063da8bd99c1f8c29e4a5afe85e4c01611744ae9f6afbb531225595ee96df65b46ae0f1a793#npm:5.50.0"],\
             ["axios", "npm:1.3.1"],\
+            ["cross-env", "npm:7.0.3"],\
+            ["dotenv", "npm:16.0.3"],\
             ["eslint", "npm:8.33.0"],\
             ["eslint-config-prettier", "virtual:a2271951ce64f3534549101d68f963fa24b2669d0a2f000f191c7063da8bd99c1f8c29e4a5afe85e4c01611744ae9f6afbb531225595ee96df65b46ae0f1a793#npm:8.6.0"],\
             ["eslint-plugin-prettier", "virtual:a2271951ce64f3534549101d68f963fa24b2669d0a2f000f191c7063da8bd99c1f8c29e4a5afe85e4c01611744ae9f6afbb531225595ee96df65b46ae0f1a793#npm:4.2.1"],\
