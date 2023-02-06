@@ -1,8 +1,9 @@
 import useLogout from 'hooks/useLogout'
 
 export default function LogoutButton() {
-  const handleClick = useLogout()
+  const { isLogin, handleClick } = useLogout()
 
+  if (!isLogin) return <></>
   return (
     <button
       onClick={() => {
