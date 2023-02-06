@@ -1,14 +1,22 @@
-import IAuthFormData from '../interfaces/IAuthFormData'
+import IAuthFormData from 'interfaces/IAuthFormData'
 import axiosClient from 'customClients/axiosClient'
 import { saveToken } from 'utils/token'
 import { BAD_REQUEST, CREATED, OK, UNAUTHORIZED } from 'consts/api'
+import {
+  IAuthRequest,
+  IDefaultResponse,
+  ITokenResponse
+} from 'interfaces/IAxios'
 
 export const signUp = async (data: IAuthFormData) => {
   try {
-    const res = await axiosClient.post('auth/signup', {
-      email: data.email.value,
-      password: data.password.value
-    })
+    const res = await axiosClient.post<IAuthRequest, IDefaultResponse>(
+      'auth/signup',
+      {
+        email: data.email.value,
+        password: data.password.value
+      }
+    )
 
     if (res.status === CREATED) {
       alert('회원가입 성공!')
@@ -25,13 +33,18 @@ export const signUp = async (data: IAuthFormData) => {
     return errorStatus
   }
 }
-
 export const signIn = async (data: IAuthFormData) => {
   try {
-    const res = await axiosClient.post('auth/signIn', {
-      email: data.email.value,
-      password: data.password.value
-    })
+    const res = await axiosClient.post<IAuthRequest, ITokenResponse>(
+      'auth/signIn',
+      {
+        email: data.email.value,
+        password: data.password.value
+      }
+    )
+
+    console.log('signin res')
+    console.log(res)
 
     if (res.status === OK) {
       alert('로그인 되었습니다.')
