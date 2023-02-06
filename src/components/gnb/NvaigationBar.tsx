@@ -1,13 +1,25 @@
-import { Link } from 'react-router-dom'
-import { deleteToken } from 'utils/token'
+import LogoutButton from './LogoutButton'
+import RouteList from './RouteList'
+
+const headerStyle = {
+  width: '100%',
+  backgroundColor: 'rgb(71,206,247)'
+}
+const navStyle = {
+  display: 'flex',
+  margin: '0 auto',
+  width: '500px',
+  justifyContent: 'center',
+  alignItems: 'center'
+}
 
 export default function NvaigationBar() {
   return (
-    <>
-      <Link to="/signup">회원가입</Link>
-      <Link to="/signin">로그인</Link>
-      <Link to="/todo">TODO</Link>
-      <button onClick={() => deleteToken()}>로그아웃</button>
-    </>
+    <header style={headerStyle}>
+      <nav style={navStyle}>
+        <RouteList />
+        <LogoutButton />
+      </nav>
+    </header>
   )
 }
