@@ -7,6 +7,9 @@
 
 > ## 화면(url 기준)
 
+0. NavBar  
+   특이사항 - 로그인 된 경우에만 로그아웃 버튼이 노출 됨  
+   <img src="./public/images/logout_button.gif" alt="logout_button"/>
 1. /signup  
    회원가입 기능이 있으며...
 2. /signin
