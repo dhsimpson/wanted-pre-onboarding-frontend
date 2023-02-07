@@ -15,6 +15,27 @@ yarn start
 - 개발 환경은 localhost:8000 api 를 사용하므로 api server (https://github.com/walking-sunset/selection-task) 를 사전에 실행 시켜야 합니다.
 
   <img src="./public/images/run_test.gif" alt="run_test"/>
+<br/>
+
+> ## 상용 환경
+
+1. 상용 환경에서 console.log, console.warn 이 아무런 로그를 남기지 않도록 함.
+   |개발|상용|
+   |---|---|
+   |<img src="./public/images/all_log.gif" alt="all_log"/>|<img src="./public/images/only_error_log.gif" alt="only_error_log"/>|
+2. 상용 빌드/배포 프로세스
+
+   ```
+   yarn build
+
+   firebase deploy
+
+   ---------------------------------
+   ```
+
+   url : https://dhsimpson-todo.web.app/
+
+<br/>
 
 > ## 추가 설치 한 의존성 (기본 CRA 이외)
 
@@ -24,6 +45,8 @@ yarn start
 3. typescript (개발 효율 향상 및 런타임 에러 컴파일 타임에서 방지)
 4. eslint (개발 경험 향상, 코드 작성 규칙 정해줌)
 5. prettier (개발 경험 향상, tab space 과 같은 코드 스타일 획일화 해줌)
+
+<br/>
 
 > ## 화면(url 기준) 및 데모
 
@@ -90,6 +113,8 @@ yarn start
     └── utils # 유틸리티 함수(ex 이메일 입력 값 validate 함수)
 ```
 
+<br/>
+
 > ## 과제 요구사항
 
 1. 로그인/회원가입 기능
@@ -119,10 +144,3 @@ yarn start
       - [x] 투두 리스트의 삭제 기능을 구현해주세요
    6. [Assignment 10](https://github.com/walking-sunset/selection-task#:~:text=%EC%95%84%EC%9D%B4%ED%85%9C%EC%9D%B4%20%EC%82%AD%EC%A0%9C%EB%90%98%EB%8F%84%EB%A1%9D%20%ED%95%B4%EC%A3%BC%EC%84%B8%EC%9A%94-,Assignment%2010,-%ED%88%AC%EB%91%90%20%EB%A6%AC%EC%8A%A4%ED%8A%B8%EC%9D%98%20%EC%88%98%EC%A0%95)
       - [x] 투두 리스트의 수정 기능을 구현해주세요
-
-> 상용 환경
-
-1. 상용 환경에서 console.log, console.warn 이 아무런 로그를 남기지 않도록 함.
-   |개발|상용|
-   |---|---|
-   |<img src="./public/images/all_log.gif" alt="all_log"/>|<img src="./public/images/only_error_log.gif" alt="only_error_log"/>|
