@@ -1,34 +1,62 @@
+> ## Clone 및 실행
+
+<br/>
+
+```
+git clone https://github.com/dhsimpson/wanted-pre-onboarding-frontend.git
+
+cd wanted-pre-onboarding-frontend
+
+yarn start
+```
+
+- zero install 이므로 의존성 설치 과정 없이 실행이 가능합니다.
+  (yarn-berry & plug and play)
+- 개발 환경은 localhost:8000 api 를 사용하므로 api server (https://github.com/walking-sunset/selection-task) 를 사전에 실행 시켜야 합니다.
+
+  <img src="./public/images/run_test.gif" alt="run_test"/>
+
 > ## 추가 설치 한 의존성 (기본 CRA 이외)
 
-1. react-router-dom (react 에서 라우팅을 위한 패키지)
-2. typescript (개발 효율 향상 및 런타임 에러 컴파일 타임에서 방지)
-3. eslint (개발 경험 향상, 코드 작성 규칙 정해줌)
-4. prettier (개발 경험 향상, tab space 과 같은 코드 스타일 획일화 해줌)
+0. 패키지 관리 : yarn (berry - LTS | pnp(for zero-install) 를 기본으로 사용)
+1. axios (api call)
+2. react-router-dom (react 에서 라우팅을 위한 패키지)
+3. typescript (개발 효율 향상 및 런타임 에러 컴파일 타임에서 방지)
+4. eslint (개발 경험 향상, 코드 작성 규칙 정해줌)
+5. prettier (개발 경험 향상, tab space 과 같은 코드 스타일 획일화 해줌)
 
-> ## 화면(url 기준)
+> ## 화면(url 기준) 및 데모
 
 0. NavBar  
    특이사항 - 로그인 된 경우에만 로그아웃 버튼이 노출 됨  
    <img src="./public/images/logout_button.gif" alt="logout_button"/>
-1. /signup
-2. /signin
+1. /signup  
+   <img src="./public/images/signup.gif" alt="signup"/>
+2. /signin  
+   <img src="./public/images/signin.gif" alt="signin"/>
 3. /todo  
-    특이사항 1. - 서버 응답에 setTimeout(1초) 를 줘 강제 suspense 동작  
+    |Create|Read|Update|Delete|
+   |---|---|---|---|
+   | <img src="./public/images/createTodo.gif" alt="createTodo"/> | <img src="./public/images/readTodo.gif" alt="readTodo"/> | <img src="./public/images/updateTodo.gif" alt="updateTodo"/> | <img src="./public/images/deleteTodo.gif" alt="deleteTodo"/> |
+
+   특이사항 1. - 서버 응답에 setTimeout(1초) 를 줘 강제 suspense 동작  
     <img src="./public/images/suspense.gif" alt="suspense"/>  
     <br/>
+
    특이사항 2. - memo 기능 이용해 불필요한 todo item 렌더링 방지  
-    |AS-IS|TO-BE|
-   |---|---|
+   |AS-IS|TO-BE|
+   |---|----|
    |<img src="./public/images/no_memo.gif" alt="no_memo"/>|<img src="./public/images/memo.gif" alt="memo"/>|
+
    특이사항 3. - todo list 쿼리 error 발생시 다시시도하기 버튼을 통해 다시 쿼리
 
    - Front-end 에서 axios 쿼리 timout 을 0.75 초로 설정
    - 서버 응답에 강제 랜덤 timeout을 줘 (0.5~ 1.0 초) 랜덤하게 에러 발생하게 설정
      <img src="./public/images/random_timeout.png"/>
-   - 에러 발생시 다시시도 버튼 클릭으로 리로딩 (retry count state 이용)
+   - 에러 발생시 다시시도 버튼 클릭으로 리로딩 (retry count state 이용)  
      <img src="./public/images/error.gif"/>
 
-   > ## 사용 가능 API (Back End)
+> ## 사용 가능 API (Back End)
 
 [API github 주소](https://github.com/walking-sunset/selection-task)
 
@@ -41,6 +69,26 @@
 4. /todos/:id - PUT, DELETE
 
 <hr/>
+
+> ## 프로젝트 구조
+
+<br/>
+
+```
+└── src
+    ├── api # axios call 로직
+    ├── components # pages 의 컴포넌트들
+    │   ├── common
+    │   ├── gnb
+    │   └── todo
+    ├── consts # 응답코드(404) 같은 상수
+    ├── context # React Context Api
+    ├── customClients # axios custom client (auth token, base url 설정)
+    ├── hooks # react custom hooks (공통사용 로직 or 비즈니스 로직)
+    ├── interfaces # 타입 정의
+    ├── pages # 화면 (/signup, /todo)
+    └── utils # 유틸리티 함수(ex 이메일 입력 값 validate 함수)
+```
 
 > ## 과제 요구사항
 
@@ -78,7 +126,3 @@
    |개발|상용|
    |---|---|
    |<img src="./public/images/all_log.gif" alt="all_log"/>|<img src="./public/images/only_error_log.gif" alt="only_error_log"/>|
-
-> ## 참고한 자료들
-
-> > [navigation guard](https://blog.netcetera.com/how-to-create-guarded-routes-for-your-react-app-d2fe7c7b6122)
