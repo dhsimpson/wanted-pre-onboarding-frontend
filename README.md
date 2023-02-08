@@ -17,7 +17,7 @@ yarn start
   <img src="./public/images/run_test.gif" alt="run_test"/>
 <br/>
 
-> ## 상용 환경
+> ## 상용 환경  https://dhsimpson-todo.web.app/
 
 1. 상용 환경에서 console.log, console.warn 이 아무런 로그를 남기지 않도록 함.
    |개발|상용|
@@ -33,7 +33,7 @@ yarn start
    ---------------------------------
    ```
 
-   url : https://dhsimpson-todo.web.app/
+
 
 <br/>
 
